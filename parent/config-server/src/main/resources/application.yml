@@ -2,13 +2,52 @@
 spring:
   application:
     name: config-server
-  profiles:
-    active: native
   cloud:
     config:
       server:
-        native:
-          search-locations: classpath:config/
+        git:
+          uri: git@github.com:kiop1/shop-cloud-config.git
+          ignore-local-ssh-settings: true
+          private-key: |
+            -----BEGIN RSA PRIVATE KEY-----
+            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
+            -----END RSA PRIVATE KEY-----
 eureka:
   client:
     service-url:
