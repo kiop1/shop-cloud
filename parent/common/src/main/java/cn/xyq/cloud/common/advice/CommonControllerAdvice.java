@@ -7,12 +7,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 public class CommonControllerAdvice {
 
-    private CodeMsg codeMsg;
-
-    public CommonControllerAdvice(CodeMsg codeMsg) {
-        this.codeMsg = codeMsg;
-    }
-
     @ExceptionHandler(Exception.class)
     public Result<?> handleException(Exception ex) {
         ex.printStackTrace();
@@ -20,8 +14,10 @@ public class CommonControllerAdvice {
     }
 
     @ExceptionHandler(BusinessException.class)
-    public Result<?> businessHandleException(Exception ex) {
-        ex.printStackTrace();
+    public Result<?> businessHandleException(BusinessException ex) {
+        CodeMsg codeMsg = ex.getCodeMsg();
+        System.out.println("1111");
+        System.err.println("[business exception] business handle failed, code msg is:{code:" + codeMsg.getCode() + ", msg:" + codeMsg.getMsg() + "}");
         return Result.error(codeMsg);
     }
 }

@@ -11,5 +11,4 @@ spring:
         enabled: true
         service-id: config-server
       label: master
-      name: member-server
-
+      name: member-server,reids

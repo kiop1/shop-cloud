@@ -18,6 +18,10 @@ public class Result<T> implements Serializable {
     private String msg;
     private T data;
 
+    public static Result<?> success() {
+        return new Result<>(DEFAULT_SUCCESS_CODE, DEFAULT_SUCCESS_MSG, null);
+    }
+
     public static <T> Result<T> success(T data) {
         return new Result<>(DEFAULT_SUCCESS_CODE, DEFAULT_SUCCESS_MSG, data);
     }
